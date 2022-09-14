@@ -2,6 +2,11 @@
     margin-left: 30px;
 }
 
+#incrementButton{
+    color: blue;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 .chartContainer {
     margin-left: 50px;
     margin-top: 100px;

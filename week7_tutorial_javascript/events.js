@@ -3,6 +3,9 @@ function incrementCounter() {
 	var spanElement = document.getElementById('counter');
 	var count = spanElement.getAttribute('numberOfClicks');
     count++;    
+    // Element.innerText is the textual content displayed by a span 
+    // element. Assigning a new value to the innerText attribute 
+    // modifies the text, in this example, the new text is the count value.
     spanElement.innerText = count;
     spanElement.setAttribute('numberOfClicks', count);
 }
