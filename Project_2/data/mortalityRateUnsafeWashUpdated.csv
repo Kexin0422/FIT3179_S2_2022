@@ -1,4 +1,4 @@
-Country,Year,Dim1,MortalityRate,Region,SubRegion,Latitude,Longitude
+Country,Year,Gender,MortalityRate,Region,SubRegion,Latitude,Longitude
 Afghanistan,2016,Both sexes,13.92,Asia,Southern Asia,33.0,65.0
 Afghanistan,2016,Male,12.61,Asia,Southern Asia,33.0,65.0
 Afghanistan,2016,Female,15.31,Asia,Southern Asia,33.0,65.0
