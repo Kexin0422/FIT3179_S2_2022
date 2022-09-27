@@ -1,0 +1,41 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {"url": "https://raw.githubusercontent.com/Kexin0422/FIT3179_S2_2022/main/Project_2/data/atLeastBasicSanitizationServicesUpdated.csv"},
+    "width":"container",
+    "height":450,
+    "mark": "circle",
+    "transform": [
+        {"filter":"datum.Area =='Urban'"},
+        {
+        "joinaggregate": [
+            {"op":"sum",
+            "field": "AtLeastBasicSanitizationService",
+            "as": "SumOfAtLeastBasicSanitizationService"},
+            {"op":"count",
+            "field": "AtLeastBasicSanitizationService",
+            "as":"CountofAtLeastBasicSanitizationService"}
+        ],
+        "groupby": ["Year","Region"]
+    },
+    {
+        "calculate": "datum.SumOfAtLeastBasicSanitizationService / datum.CountofAtLeastBasicSanitizationService" ,
+        "as" : "output"
+    }    
+    ],
+    "encoding": {
+      "x": {
+        "field": "Region","type":"nominal"
+      },
+      "y": {
+        "field": "output","type":"quantitative"
+      },
+      "color":{"field":"Year"},
+      "tooltip":[
+        {"field":"Year","type":"quantitative"},
+        {"field": "Area", "type": "nominal"},
+        {"field":"SumOfAtLeastBasicSanitizationService" ,"type" : "quantitative"},
+        {"field": "CountofAtLeastBasicSanitizationService", "type" : "quantitative"},
+        {"field":"output", "type":"quantitative","format":".2f"}
+    ]
+    }
+  }
