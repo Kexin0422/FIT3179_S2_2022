@@ -1,0 +1,34 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {"url": "https://raw.githubusercontent.com/Kexin0422/FIT3179_S2_2022/main/Project_2/data/basicDrinkingWaterServicesUpdated.csv"},
+    "mark": {"type": "bar", "cornerRadiusTopLeft": 3, "cornerRadiusTopRight": 3},
+    "transform": [{
+        "joinaggregate": [
+            {"op":"sum",
+            "field": "BasicDrinkingWaterServices",
+            "as": "SumOfBasicDrinkingWaterServices"},
+            {"op":"count",
+            "field": "BasicDrinkingWaterServices",
+            "as":"CountofBasicDrinkingWaterServices"}
+        ],
+        "groupby": ["Year","Region"]
+    },
+    {
+        "calculate": "datum.SumOfBasicDrinkingWaterServices / datum.CountofBasicDrinkingWaterServices" ,
+        "as" : "output"
+    }
+    
+       
+    ],
+    "encoding": {
+      "x": {"timeUnit": "year", "field": "Year", "type": "ordinal"},
+      "y": {"field" : "output", "type" :"quantitative"},
+      "color": {"field": "Region"},
+      "tooltip":[
+        {"field":"SumOfBasicDrinkingWaterServices" ,"type" : "quantitative"},
+        {"field": "CountofBasicDrinkingWaterServices", "type" : "quantitative"},
+        {"field":"output", "type":"quantitative","format":".2f"}
+    ]
+    }
+  }
+
