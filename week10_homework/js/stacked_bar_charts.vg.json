@@ -1,0 +1,88 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Population Using Basic Drinking Water Services",
+    "data": {"url": "https://raw.githubusercontent.com/Kexin0422/FIT3179_S2_2022/main/Project_2/data/basicDrinkingWaterServicesUpdated.csv"},
+    "params": [
+        {
+            "name" : "Region_selection",
+            "bind" : {
+                "input" : "select",
+                "options": [
+                    null, 
+                    "Africa",
+                    "Americas",
+                    "Asia",
+                    "Europe",
+                    "Oceania"
+                ],
+                "labels": [
+                    "Show All",
+                    "Africa",
+                    "Americas",
+                    "Asia",
+                    "Europe",
+                    "Oceania"
+                ],
+                "name": "Region Selection"
+            }
+        }
+    ],
+    "transform": [{
+        "joinaggregate": [
+            {"op":"sum",
+            "field": "BasicDrinkingWaterServices",
+            "as": "SumOfBasicDrinkingWaterServices"},
+            {"op":"count",
+            "field": "BasicDrinkingWaterServices",
+            "as":"CountofBasicDrinkingWaterServices"}
+        ],
+        "groupby": ["Year","Region"]
+    },
+    {
+        "calculate": "datum.SumOfBasicDrinkingWaterServices / datum.CountofBasicDrinkingWaterServices" ,
+        "as" : "output"
+    },
+    {"filter": "Region_selection == null || datum.Region == Region_selection"}
+    ],
+    "encoding": {
+        "x": {"timeUnit": "year", "field": "Year", "type": "ordinal", "title":"Year"},
+        "y": {"field" : "output", "type" :"quantitative", "title":"Population (%)"}
+    },
+    "layer":[
+        {
+            "mark" : "bar",
+            "encoding": {
+                "color": {"field": "Region"},
+                "tooltip":[
+                  {"field":"Region","type" : "nominal"},
+                  {"field": "Year", "type":"ordinal","timeUnit": "year", "title":"Year"},
+                  {"field":"output", "type":"quantitative","format":".2f", "title": "Population (%)"} ]
+              }
+        } ,       
+        {
+            "mark":{
+                "type": "text",
+                "align":"right",
+                "baseline":"middle",
+                "dx" : -12,
+                "fontSize":11.5,
+                "fontStyle":"italic"
+            },
+            "encoding": {
+                "text":{"field":"Region", "type": "nominal"},
+                "color":{"value":"black"},
+                "opacity":{
+                    "condition":{
+                        "test": "datum.output >= 98.27", "value":1
+                    },
+                    "value":0
+                },
+                "tooltip":[
+                    {"field":"Region","type" : "nominal"},
+                    {"field": "Year", "type":"ordinal","timeUnit": "year", "title":"Year"},
+                    {"field":"output", "type":"quantitative","format":".2f", "title": "Population (%)"} ]
+            }
+        }
+    ]
+  }
+
