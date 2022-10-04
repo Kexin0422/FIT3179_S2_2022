@@ -62,14 +62,15 @@
         {
             "mark":{
                 "type": "text",
+                "angle": 90,
                 "align":"right",
                 "baseline":"middle",
-                "dx" : -12,
+                "dx" : -5,
                 "fontSize":11.5,
                 "fontStyle":"italic"
             },
             "encoding": {
-                "text":{"field":"Region", "type": "nominal"},
+                "text":{"field":"output", "type": "nominal", "format":".2f"},
                 "color":{"value":"black"},
                 "opacity":{
                     "condition":{
