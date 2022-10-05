@@ -3,39 +3,25 @@
     "data": {"url": "https://raw.githubusercontent.com/Kexin0422/FIT3179_S2_2022/main/Project_2/data/atLeastBasicSanitizationServicesUpdated.csv"},
     "width":"container",
     "height":450,
+    "title": "Urban",
     "mark": "circle",
     "transform": [
-        {"filter":"datum.Area =='Urban'"},
-        {
-        "joinaggregate": [
-            {"op":"sum",
-            "field": "AtLeastBasicSanitizationService",
-            "as": "SumOfAtLeastBasicSanitizationService"},
-            {"op":"count",
-            "field": "AtLeastBasicSanitizationService",
-            "as":"CountofAtLeastBasicSanitizationService"}
-        ],
-        "groupby": ["Year","Region"]
-    },
-    {
-        "calculate": "datum.SumOfAtLeastBasicSanitizationService / datum.CountofAtLeastBasicSanitizationService" ,
-        "as" : "output"
-    }    
+        {"filter":"datum.Area =='Urban'"}
     ],
     "encoding": {
       "x": {
         "field": "Region","type":"nominal"
       },
       "y": {
-        "field": "output","type":"quantitative"
+        "field": "AtLeastBasicSanitizationService","type":"quantitative"
       },
-      "color":{"field":"Year"},
+      "color":{
+        "field":"YearGroup",
+        "legend":{"labelExpr": "{'0': '2000-2003','1':'2004-2007','2':'2008-2011','3':'2012-2015','4':'2016-2017'}[datum.label]"}},
       "tooltip":[
-        {"field":"Year","type":"quantitative"},
+        {"field":"Region","type": "nominal"},
         {"field": "Area", "type": "nominal"},
-        {"field":"SumOfAtLeastBasicSanitizationService" ,"type" : "quantitative"},
-        {"field": "CountofAtLeastBasicSanitizationService", "type" : "quantitative"},
-        {"field":"output", "type":"quantitative","format":".2f"}
+        {"field":"AtLeastBasicSanitizationService", "type":"quantitative","format":".2f"}
     ]
     }
   }

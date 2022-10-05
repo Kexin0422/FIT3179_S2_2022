@@ -1,41 +1,27 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "data": {"url": "https://raw.githubusercontent.com/Kexin0422/FIT3179_S2_2022/main/Project_2/data/atLeastBasicSanitizationServicesUpdated.csv"},
-    "width":"container",
-    "height":450,
-    "mark": "circle",
-    "transform": [
-        {"filter":"datum.Area =='Total'"},
-        {
-        "joinaggregate": [
-            {"op":"sum",
-            "field": "AtLeastBasicSanitizationService",
-            "as": "SumOfAtLeastBasicSanitizationService"},
-            {"op":"count",
-            "field": "AtLeastBasicSanitizationService",
-            "as":"CountofAtLeastBasicSanitizationService"}
-        ],
-        "groupby": ["Year","Region"]
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "https://raw.githubusercontent.com/Kexin0422/FIT3179_S2_2022/main/Project_2/data/atLeastBasicSanitizationServicesUpdated.csv"},
+  "width":"container",
+  "height":450,
+  "title": "Total",
+  "mark": "circle",
+  "transform": [
+      {"filter":"datum.Area =='Total'"}
+  ],
+  "encoding": {
+    "x": {
+      "field": "Region","type":"nominal"
     },
-    {
-        "calculate": "datum.SumOfAtLeastBasicSanitizationService / datum.CountofAtLeastBasicSanitizationService" ,
-        "as" : "output"
-    }    
-    ],
-    "encoding": {
-      "x": {
-        "field": "Region","type":"nominal"
-      },
-      "y": {
-        "field": "output","type":"quantitative"
-      },
-      "color":{"field":"Year"},
-      "tooltip":[
-        {"field":"Year","type":"quantitative"},
-        {"field": "Area", "type": "nominal"},
-        {"field":"SumOfAtLeastBasicSanitizationService" ,"type" : "quantitative"},
-        {"field": "CountofAtLeastBasicSanitizationService", "type" : "quantitative"},
-        {"field":"output", "type":"quantitative","format":".2f"}
-    ]
-    }
+    "y": {
+      "field": "AtLeastBasicSanitizationService","type":"quantitative"
+    },
+    "color":{
+      "field":"YearGroup",
+      "legend":{"labelExpr": "{'0': '2000-2003','1':'2004-2007','2':'2008-2011','3':'2012-2015','4':'2016-2017'}[datum.label]"}},
+    "tooltip":[
+      {"field":"Region","type": "nominal"},
+      {"field": "Area", "type": "nominal"},
+      {"field":"AtLeastBasicSanitizationService", "type":"quantitative","format":".2f"}
+  ]
   }
+}
