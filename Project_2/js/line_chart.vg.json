@@ -1,25 +1,23 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width":"container",
+    "title" : "Distribution of people using Safe Sanitization",
     "data": {"url": "https://raw.githubusercontent.com/Kexin0422/FIT3179_S2_2022/main/Project_2/data/safelySanitizationUpdated.csv"},
     "transform": [
         {"filter":"datum.Area =='Total'"}
     ],
     "mark": {
       "type": "line",
-      "point": {
-        "filled": false,
-        "fill": "white"
-      }
+      "point": true
     },
     "encoding": {
       "x": {"timeUnit": "year", "field": "Year","title":"Year"},
-      "y": {"aggregate":"mean", "field": "SafeSanitization", "type": "quantitative"},
+      "y": {"aggregate":"mean", "field": "SafeSanitization", "type": "quantitative", "title":"Population (%)"},
       "color": {"field": "Region", "type": "nominal"},
       "tooltip":[
         {"field":"Year", "type":"ordinal","timeUnit": "year", "title":"Year"},
         {"field":"Region", "type": "nominal"},
-        {"field":"SafeSanitization","aggregate":"mean","type": "quantitative","format":".2f"}
+        {"field":"SafeSanitization","aggregate":"mean","type": "quantitative","format":".2f", "title":"Population (%)"}
       ]
     }
   }
