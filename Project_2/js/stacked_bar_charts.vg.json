@@ -28,31 +28,17 @@
             }
         }
     ],
-    "transform": [{
-        "joinaggregate": [
-            {"op":"sum",
-            "field": "BasicDrinkingWaterServices",
-            "as": "SumOfBasicDrinkingWaterServices"},
-            {"op":"count",
-            "field": "BasicDrinkingWaterServices",
-            "as":"CountofBasicDrinkingWaterServices"}
-        ],
-        "groupby": ["Year","Region"]
-    },
-    {
-        "calculate": "datum.SumOfBasicDrinkingWaterServices / datum.CountofBasicDrinkingWaterServices" ,
-        "as" : "output"
-    },
+    "transform": [
     {"filter": "Region_selection == null || datum.Region == Region_selection"} 
     ],
     "encoding": {
       "x": {"timeUnit": "year", "field": "Year", "type": "ordinal", "title" : "Year"},
-      "y": {"field" : "output", "type" :"quantitative", "title":"Population (%)"},
+      "y": {"aggregate" : "mean", "field" : "BasicDrinkingWaterServices" ,"type" :"quantitative", "title":"Population (%)"},
       "color": {"field": "Region"},
       "tooltip":[
         {"field":"Region","type" : "nominal"},
         {"field": "Year", "type":"ordinal","timeUnit": "year", "title":"Year"},
-        {"field":"output", "type":"quantitative","format":".2f", "title": "Population (%)"} ]
+        {"field":"BasicDrinkingWaterServices","aggregate" : "mean", "type":"quantitative","format":".2f", "title": "Population (%)"} ]
     }
   }
 
