@@ -1,7 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "background": "rgba(0,0,0,0)",
-    "title":"Population Using Basic Drinking Water Services",
     "data": {"url": "https://raw.githubusercontent.com/Kexin0422/FIT3179_S2_2022/main/Project_2/data/basicDrinkingWaterServicesUpdated.csv"},
     "mark": {"type": "bar", "cornerRadiusTopLeft": 3, "cornerRadiusTopRight": 3},
     "params": [

@@ -1,5 +1,5 @@
 var spec = "js/symbol_map.vg.json";
-var spec2 = "js/stacked_bar_charts.vg.json";
+var spec2 = "js/stacked_bar_chart.vg.json";
 var spec3 = "js/dotplot_rural.vg.json";
 var spec4 = "js/dotplot_urban.vg.json";
 var spec5 = "js/line_chart.vg.json";
