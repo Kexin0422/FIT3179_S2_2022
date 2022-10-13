@@ -3,17 +3,64 @@
     "background": "rgba(0,0,0,0)",
     "width":"container",
     "data": {"url": "https://raw.githubusercontent.com/Kexin0422/FIT3179_S2_2022/main/Project_2/data/safelySanitizationUpdated.csv"},
-    "transform": [
-        {"filter":"datum.Area =='Total'"}
-    ],
+
+    "params": [
+      {
+          "name" : "Region_selection",
+          "bind" : {
+              "input" : "select",
+              "options": [
+                  null, 
+                  "Africa",
+                  "Americas",
+                  "Asia",
+                  "Europe",
+                  "Oceania"
+              ],
+              "labels": [
+                  "Show All",
+                  "Africa",
+                  "Americas",
+                  "Asia",
+                  "Europe",
+                  "Oceania"
+              ],
+              "name": "Region Selection"
+          }
+      }
+  ],
+  "transform": [
+  {"filter": "Region_selection == null || datum.Region == Region_selection"},
+  {"filter":"datum.Area =='Total'"}
+  ],
     "mark": {
       "type": "line",
       "point": true
     },
     "encoding": {
       "x": {"timeUnit": "year", "field": "Year","title":"Year"},
-      "y": {"aggregate":"mean", "field": "SafeSanitization", "type": "quantitative", "title":"Population (%)"},
-      "color": {"field": "Region", "type": "nominal"},
+      "y": {"aggregate":"mean", "field": "SafeSanitization", "type": "quantitative", "title":"Population (%)","scale":{"domain":[0,100]}},
+      "color": {
+        "field": "Region", 
+        "type": "nominal",
+        "scale":{
+          "domain":[
+            "Oceania",
+            "Europe",
+            "Asia",
+            "Americas",
+            "Africa"
+        ],
+        "range":[
+            "#C9B0EF",
+            "#8DBE86",
+            "#5C82FB",
+            "#EEE300",
+            "#92895B"
+
+        ]}
+
+    },
       "tooltip":[
         {"field":"Year", "type":"ordinal","timeUnit": "year", "title":"Year"},
         {"field":"Region", "type": "nominal"},
