@@ -1,5 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "background": "rgba(0,0,0,0)",
     "width":"container",
     "title" : "Distribution of people using Safe Sanitization",
     "data": {"url": "https://raw.githubusercontent.com/Kexin0422/FIT3179_S2_2022/main/Project_2/data/safelySanitizationUpdated.csv"},

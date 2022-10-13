@@ -11,10 +11,15 @@
     ],
     "encoding": {
       "x": {
-        "field": "Region","type":"nominal"
+        "field": "Region",
+        "type":"nominal",
+        "axis": {"tickCount": 10}
       },
       "y": {
-        "field": "AtLeastBasicSanitizationService","type":"quantitative", "title":"Population (%)"
+        "field": "AtLeastBasicSanitizationService",
+        "type":"quantitative",
+         "title":"Population (%)",
+         "axis": {"tickCount": 10}
       },
       "color":{
         "field":"YearGroup",
