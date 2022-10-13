@@ -1,0 +1,56 @@
+#region_selection{
+    width: 150px;
+    height: 35px;
+    color: gray;
+    border: none;
+}
+
+.fix-div{position:fixed; height:100%; width:100%; left:0; top:0; z-index:1;}
+
+.title {
+    font-family: 'Kalam', cursive;
+    font-size: 40pt;
+    text-align: center;
+}
+
+.page {
+	margin: auto;
+	padding: 50px;
+	padding-top: 35px;
+  }
+
+  .pure-g {
+	margin-bottom: 40px;
+  }
+
+  .vis-container {
+	width: 100%;
+  }
+  
+.header {
+    width: 90%;
+    margin-left: auto; 
+    margin-right: auto;
+    margin-bottom: 50px;
+    color: #E4E4E9;
+    background-color: #002B70;
+}
+
+.sticky-panel {
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100%;
+    z-index: 1;
+    position: fixed;
+    background-color: #002B70;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+
+#c-align{
+	text-align: center;
+}
+
+#wrapper{position:relative; z-index:2; margin-left:300px;}

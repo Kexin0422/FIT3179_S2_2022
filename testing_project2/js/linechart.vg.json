@@ -1,0 +1,24 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Stock prices of 5 Tech Companies over Time.",
+    "signals": [
+      {
+        "name": "region_selection",
+        "value": "All"
+      }
+    ],
+    "data": {"url": "https://raw.githubusercontent.com/Kexin0422/FIT3179_S2_2022/main/Project_2/data/safelySanitizationUpdated_2.csv"
+    },
+    "mark": {"type":"line","point": true},
+    "transform": [
+      {"filter": "region_selection == 'All' || datum.Region == region_selection"} ],
+    "encoding": {
+      "x": {"field": "Year", "type": "temporal"},
+      "y": {"field": "SafeSanitization","aggregate": "mean", "type": "quantitative"},
+      "color": {"field": "Region", "type": "nominal"},
+      "tooltip":[
+        {"field":"SafeSanitization","aggregate":"mean","type":"quantitative"}
+      ]
+    }
+  }
+  
