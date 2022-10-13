@@ -1,6 +1,9 @@
 {
     "height": 800,
     "padding": 5,
+    "transform":[{
+        "calculate" : "datum.size /100", "as" : "percentage"
+    }],
     "marks": [
       {
         "encode": {
@@ -15,7 +18,8 @@
           "enter": {
             "shape": {"value": "circle"},
             "tooltip": {
-              "signal": "datum.name + (datum.size ? ', ' + datum.size + ' bytes' : '')"
+                "field":{"field":"percentage", "type":"quantitative"},
+              "signal": "datum.name + (datum.percentage ? ', ' + datum.percentage + ' bytes' : '')"
             },
             "fill": {"field": "depth", "scale": "color"}
           }
@@ -54,7 +58,7 @@
             "id": 3,
             "name": "Northern Africa",
             "parent": 2,
-            "size": 111,
+            "size": 4305,
             "x": 419.4977497480778,
             "y": 322.25839382307544,
             "r": 18.775388002174978,
@@ -65,7 +69,7 @@
             "id": 4,
             "name": "Sub-Saharan Africa",
             "parent": 2,
-            "size": 3938,
+            "size": 1629,
             "x": 419.9426747787233,
             "y": 334.17334898111557,
             "r": 6.852128602958591,
