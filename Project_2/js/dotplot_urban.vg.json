@@ -6,14 +6,41 @@
     "height":400,
     "title": "Urban Area",
     "mark": "circle",
+    "params": [
+      {
+          "name" : "Year_selection",
+          "bind" : {
+              "input" : "select",
+              "options": [
+                  null, 
+                  "0",
+                  "1",
+                  "2",
+                  "3",
+                  "4"
+              ],
+              "labels": [
+                  "Show All",
+                  "0",
+                  "1",
+                  "2",
+                  "3",
+                  "4"
+              ],
+              "name": "Year Group Selection"
+          }
+      }
+  ],
     "transform": [
-        {"filter":"datum.Area =='Urban'"}
+        {"filter":"datum.Area =='Urban'"},
+        {"filter": "Year_selection == null || datum.YearGroup == Year_selection"} 
     ],
     "encoding": {
       "x": {
         "field": "Region",
         "type":"nominal",
-        "axis": {"tickCount": 10}
+        "axis": {"tickCount": 10,"labelAngle":45}
+        
       },
       "y": {
         "field": "AtLeastBasicSanitizationService",

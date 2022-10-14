@@ -31,14 +31,13 @@
         {
             "name": "highlight",
             "select": {"type": "point", "on": "mouseover"}
-          },
-          {"name": "select", "select": "point"}
+          }
     ],
     "transform": [
     {"filter": "Region_selection == null || datum.Region == Region_selection"} 
     ],
     "encoding": {
-      "x": {"timeUnit": "year", "field": "Year", "type": "ordinal", "title" : "Year","axis": {"labelAngle": 45}},
+      "x": {"timeUnit": "year", "field": "Year",  "title" : "Year"},
       "y": {"aggregate" : "mean", "field" : "BasicDrinkingWaterServices" ,"type" :"quantitative", "title":"Population (%)"},
       "color": {
         "field": "Region",
@@ -52,10 +51,10 @@
                 "Africa"
             ],
             "range":[
-                "#C9B0EF",
+                "#FF9D18",
                 "#8DBE86",
                 "#5C82FB",
-                "#EEE300",
+                "#5B00BD",
                 "#92895B"
 
             ]

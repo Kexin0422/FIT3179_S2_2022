@@ -35,15 +35,6 @@
       "color": {
       "condition": {"test": "datum.SafeSanitization < 40 && datum.BasicDrinkingWaterServices <40", "value": "red"},
       "value": "blue"},
-      "size":{
-        "field":"SafeSanitization",
-        "type": "quantitative",
-        "scale":{
-            "type":"threshold",
-            "domain":[40,80],
-            "range":[50,150]
-        }
-      },
       "tooltip":[
         {"field":"SafeSanitization","type":"quantitative","title":"Safe Sanitization (%)"},
         {"field":"BasicDrinkingWaterServices","type":"quantitative","title":"Drinking Water Services (%)"},
