@@ -27,12 +27,19 @@
               ],
               "name": "Region Selection"
           }
-      }
+      },
+      {
+        "name": "Region_highlight",
+        "select": {"type": "point", "fields": ["Region"]},
+        "bind": "legend"
+        }
+
   ],
   "transform": [
   {"filter": "Region_selection == null || datum.Region == Region_selection"},
   {"filter":"datum.Area =='Total'"}
   ],
+  
     "mark": {
       "type": "line",
       "point": true
@@ -59,7 +66,9 @@
             "#92895B"
 
         ]}
-
+    },
+    "opacity":{
+      "condition":{"param": "Region_highlight","value":1},"value":0.2
     },
       "tooltip":[
         {"field":"Year", "type":"ordinal","timeUnit": "year", "title":"Year"},
