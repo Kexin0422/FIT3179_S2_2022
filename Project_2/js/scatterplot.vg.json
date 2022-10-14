@@ -1,6 +1,19 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "data": {"url":"https://raw.githubusercontent.com/Kexin0422/FIT3179_S2_2022/main/Project_2/data/safelySanitizationUpdated_2.csv"},
+    "params": [
+        {
+            "name": "Year_selection",
+            "value": 0,
+            "bind": {
+              "input": "range",
+              "min": 2000,
+              "max": 2017,
+              "step": 1,
+              "name": "Year Selection: "
+          } }
+          
+    ],
     "transform": [
     {
       "lookup": "Country",
@@ -11,7 +24,7 @@
       }
     },
     {"filter":"datum.Area =='Total'"},
-    {"filter":"datum.Year == '2017'"}
+    {"filter": "datum.Year == Year_selection"}
   ],
     "mark": "circle",
     "encoding": {
