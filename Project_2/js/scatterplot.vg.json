@@ -1,10 +1,12 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "background": "rgba(0,0,0,0)",
+    "width":500,
     "data": {"url":"https://raw.githubusercontent.com/Kexin0422/FIT3179_S2_2022/main/Project_2/data/safelySanitizationUpdated_2.csv"},
     "params": [
         {
             "name": "Year_selection",
-            "value": 0,
+            "value": 2000,
             "bind": {
               "input": "range",
               "min": 2000,
@@ -28,15 +30,23 @@
   ],
     "mark": "circle",
     "encoding": {
-      "x": {"field": "SafeSanitization", "type": "quantitative"},
-      "y": {"field": "BasicDrinkingWaterServices", "type": "quantitative"},
+      "x": {"field": "SafeSanitization", "type": "quantitative", "title":"Safe Sanitization (%)"},
+      "y": {"field": "BasicDrinkingWaterServices", "type": "quantitative","title":"Drinking Water Services (%)"},
       "color": {
       "condition": {"test": "datum.SafeSanitization < 40 && datum.BasicDrinkingWaterServices <40", "value": "red"},
-      "value": "blue"
-    },
+      "value": "blue"},
+      "size":{
+        "field":"SafeSanitization",
+        "type": "quantitative",
+        "scale":{
+            "type":"threshold",
+            "domain":[40,80],
+            "range":[50,150]
+        }
+      },
       "tooltip":[
         {"field":"SafeSanitization","type":"quantitative","title":"Safe Sanitization (%)"},
-        {"field":"BasicDrinkingWaterServices","type":"quantitative","title":"Basic Drinking Water Services (%)"},
+        {"field":"BasicDrinkingWaterServices","type":"quantitative","title":"Drinking Water Services (%)"},
         {"field":"Country","type": "nominal"},
         {"field":"Year"}
       ]
