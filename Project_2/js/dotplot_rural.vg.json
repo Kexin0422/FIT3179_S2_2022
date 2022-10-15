@@ -8,32 +8,21 @@
   "mark": "circle",
   "params": [
     {
-        "name" : "Year_selection",
-        "bind" : {
-            "input" : "select",
-            "options": [
-                null, 
-                "0",
-                "1",
-                "2",
-                "3",
-                "4"
-            ],
-            "labels": [
-                "Show All",
-                "0",
-                "1",
-                "2",
-                "3",
-                "4"
-            ],
-            "name": "Year Group Selection"
-        }
-    }
+        "name": "YearGroup_selection",
+        "value": 0,
+        "bind": {
+          "input": "range",
+          "min": 0,
+          "max": 4,
+          "step": 1,
+          "name": "Year Group Selection: "
+      } }
+      
 ],
   "transform": [
       {"filter":"datum.Area =='Rural'"},
-      {"filter": "Year_selection == null || datum.YearGroup == Year_selection"} 
+      {"filter": "datum.YearGroup == YearGroup_selection"}
+      
   ],
   "encoding": {
     "x": {
@@ -44,6 +33,23 @@
     },
     "color":{
       "field":"YearGroup",
+      "scale":{
+        "domain":[
+            "0",
+            "1",
+            "2",
+            "3",
+            "4"
+        ],
+        "range":[
+            "#256BA3",
+            "#A673FA",
+            "#424257",
+            "#34A200",
+            "#FF7718"
+
+        ]
+    },
       "legend":{"labelExpr": "{'0': '0: 2000-2003','1':'1: 2004-2007','2':'2: 2008-2011','3':'3: 2012-2015','4':'4: 2016-2017'}[datum.label]"}, "title":"Year Group"},
     "tooltip":[
       {"field":"Region","type": "nominal"},

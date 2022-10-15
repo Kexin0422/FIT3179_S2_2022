@@ -170,6 +170,11 @@ p.tips {
   	text-justify: inter-word;
 }
 
+#center-justified {
+    text-align: justify;
+    text-align-last: center;
+}
+
 #r-align{
 	text-align: right;
 }
