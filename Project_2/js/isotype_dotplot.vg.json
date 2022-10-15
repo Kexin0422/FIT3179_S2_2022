@@ -1,0 +1,49 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "background": "rgba(0,0,0,0)",
+    "config": {"view": {"stroke": ""}},
+    "width": 600,
+    "height": 200,
+    "data": {
+      "values": [
+        {"country": "Chad", "gender": "male"},
+        {"country": "Chad", "gender": "male"},
+        {"country": "Chad", "gender": "male"},
+        {"country": "Chad", "gender": "male"},
+        {"country": "Chad", "gender": "male"},
+        {"country": "Chad", "gender": "male"},
+        {"country": "Chad", "gender": "male"},
+        {"country": "Chad", "gender": "male"},
+        {"country": "Chad", "gender": "male"},
+        {"country": "Chad", "gender": "male"},
+  
+        {"country": "Chad", "gender": "female"},
+        {"country": "Chad", "gender": "female"},
+        {"country": "Chad", "gender": "female"},
+        {"country": "Chad", "gender": "female"},
+        {"country": "Chad", "gender": "female"},
+        {"country": "Chad", "gender": "female"},
+        {"country": "Chad", "gender": "female"},
+        {"country": "Chad", "gender": "female"},
+        {"country": "Chad", "gender": "female"}
+  
+      ]
+    },
+    "transform": [
+      {
+        "calculate": "{'female': '👩🏻', 'male': '👨🏻'}[datum.gender]",
+        "as": "emoji"
+      },
+      {"window": [{"op": "rank", "as": "rank"}], "groupby": ["country", "gender"]}
+    ],
+    "mark": {"type": "text", "baseline": "middle"},
+    "encoding": {
+      "x": {"field": "rank", "type": "ordinal", "axis": null},
+      "y": {"field": "gender", "type": "nominal", "axis": null, "sort": null},
+      
+      "row": {"field": "country", "header": {"title": ""}},
+      "text": {"field": "emoji", "type": "nominal"},
+      "size": {"value": 65}
+    }
+  }
+  

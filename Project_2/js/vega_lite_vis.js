@@ -3,8 +3,8 @@ var spec2 = "js/stacked_bar_chart.vg.json";
 var spec3 = "js/dotplot_rural.vg.json";
 var spec4 = "js/dotplot_urban.vg.json";
 var spec5 = "js/line_chart.vg.json";
-var spec6 = "js/circle_packing.vg.json";
-var spec7 = "js/scatterplot.vg.json";
+var spec6 = "js/scatterplot.vg.json";
+var spec7 = "js/isotype_dotplot.vg.json";
 
 
 vegaEmbed('#symbol_map', spec).then(function(result) {
@@ -27,10 +27,10 @@ vegaEmbed('#line_chart', spec5).then(function(result) {
   // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
 }).catch(console.error);
 
-vegaEmbed('#circle_packing', spec6).then(function(result) {
+vegaEmbed('#scatterplot', spec6).then(function(result) {
   // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
 }).catch(console.error);
 
-vegaEmbed('#scatterplot', spec7).then(function(result) {
+vegaEmbed('#isotype_dotplot', spec7).then(function(result) {
   // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
 }).catch(console.error);

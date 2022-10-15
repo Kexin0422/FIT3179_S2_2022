@@ -8,6 +8,10 @@
   "mark": "circle",
   "params": [
     {
+      "name": "ShowAll",
+      "bind": {"input": "checkbox"}
+    },
+    {
         "name": "YearGroup_selection",
         "value": 0,
         "bind": {
@@ -21,7 +25,7 @@
 ],
   "transform": [
       {"filter":"datum.Area =='Rural'"},
-      {"filter": "datum.YearGroup == YearGroup_selection"}
+      {"filter": "datum.YearGroup == YearGroup_selection || ShowAll == true"}
       
   ],
   "encoding": {
