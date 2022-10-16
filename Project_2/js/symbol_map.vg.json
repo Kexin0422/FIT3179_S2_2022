@@ -3,7 +3,6 @@
     "background": "rgba(0,0,0,0)",
     "width": 800,
     "height": 450,
-    "title": "Mortality Rate attributed to Exposure to unsafe WASH Services Per 100,000 Population",
     "projection": {"type": "equalEarth"},
     "layer": [
       {
@@ -17,7 +16,8 @@
         "data": {
           "url": "https://raw.githubusercontent.com/Kexin0422/FIT3179_S2_2022/main/Project_2/data/mortalityRateUnsafeWashUpdated.csv"
         },
-        "transform":[ {"filter": "datum.Gender=='Both sexes'"} ],
+        "transform":[ 
+          {"filter": "datum.Gender=='Both sexes'"} ],
         "mark": {"type": "circle", "tooltip": {"content": "data"}},
         "encoding": {
           "longitude": {"field": "Longitude", "type": "quantitative"},
@@ -28,11 +28,35 @@
             "scale": {"domain": [0, 110]}
           },
           "color": {
-            "field": "MortalityRate",
-            "type": "quantitative",
-            "scale": {"scheme": "reds"},
-            "legend":null
-          }
+            "field": "Region",
+            "type": "nominal",
+            "scale":{
+                "domain":[
+                    "Oceania",
+                    "Europe",
+                    "Asia",
+                    "Americas",
+                    "Africa"
+                ],
+                "range":[
+                    "#FF9D18",
+                    "#8DBE86",
+                    "#5C82FB",
+                    "#5B00BD",
+                    "#92895B"
+    
+                ]
+            }
+    
+          },
+          "tooltip":[
+            {"field":"Country","type": "nominal"},
+            {"field":"Year","type":"ordinal","timeUnit": "year", "title":"Year"},
+            {"field":"Gender", "type": "nominal"},
+            {"field":"MortalityRate","type": "quantitative","title":"Mortality Rate"},
+            {"field":"Region","type": "nominal"},
+            {"field":"SubRegion", "type": "nominal","title":"Sub Region"}
+          ]
         }
       }
     ]

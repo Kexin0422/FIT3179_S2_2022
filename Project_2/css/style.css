@@ -81,6 +81,11 @@ p.tips {
 	opacity: 0.8;
 
   }
+
+  .big_graph_container{
+	margin-left: 70px;
+	margin-right:10px;
+  }
   
   .left_graph_container{
 	margin-left: 90px; 
