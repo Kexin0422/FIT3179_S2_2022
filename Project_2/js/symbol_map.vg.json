@@ -3,7 +3,42 @@
     "background": "rgba(0,0,0,0)",
     "width": 800,
     "height": 450,
-    "projection": {"type": "equalEarth"},
+    "params": [
+      {
+        "name": "zoom_level",
+        "value": 100,
+        "bind": {
+          "input": "range",
+          "min": 100,
+          "max": 1000,
+          "step": 100,
+          "name": "Zoom: "
+      } },
+      {
+        "name" : "Region_selection",
+        "bind" : {
+            "input" : "select",
+            "options": [
+                null, 
+                "Africa",
+                "Americas",
+                "Asia",
+                "Europe",
+                "Oceania"
+            ],
+            "labels": [
+                "Show All",
+                "Africa",
+                "Americas",
+                "Asia",
+                "Europe",
+                "Oceania"
+            ],
+            "name": "Region Selection"
+        }
+    }
+    ],
+    "projection": {"type": "equalEarth","scale": {"expr": "zoom_level"}},
     "layer": [
       {
         "data": {
@@ -31,7 +66,8 @@
           "url": "https://raw.githubusercontent.com/Kexin0422/FIT3179_S2_2022/main/Project_2/data/mortalityRateUnsafeWashUpdated.csv"
         },
         "transform":[ 
-          {"filter": "datum.Gender=='Both sexes'"} ],
+          {"filter": "datum.Gender=='Both sexes'"} ,
+          {"filter": "Region_selection == null || datum.Region == Region_selection"} ],
         "mark": {"type": "circle", "tooltip": {"content": "data"}},
         "encoding": {
           "longitude": {"field": "Longitude", "type": "quantitative"},
@@ -39,8 +75,9 @@
           "size": {
             "field": "MortalityRate",
             "type": "quantitative",
-            "scale": {"domain": [0, 110]}
+            "scale": {"rangeMin":30}
           },
+          
           "color": {
             "field": "Region",
             "type": "nominal",

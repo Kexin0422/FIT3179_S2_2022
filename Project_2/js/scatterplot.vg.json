@@ -36,7 +36,7 @@
       "condition": {"test": "datum.SafeSanitization < 40 && datum.BasicDrinkingWaterServices <40", "value": "red"},
       "value": "blue"},
       "tooltip":[
-        {"field":"SafeSanitization","type":"quantitative","title":"Safe Sanitization (%)"},
+        {"field":"SafeSanitization","type":"quantitative","title":"Safe Sanitation (%)"},
         {"field":"BasicDrinkingWaterServices","type":"quantitative","title":"Drinking Water Services (%)"},
         {"field":"Country","type": "nominal"},
         {"field":"Year"}

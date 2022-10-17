@@ -82,15 +82,21 @@ p.tips {
 
   }
 
-  .big_graph_container{
-	margin-left: 70px;
-	margin-right:10px;
-  }
-  
   .left_graph_container{
 	margin-left: 90px; 
 	margin-right:10px;
   }
+
+  .map_graph_container{
+	margin-left: 70px; 
+	margin-right:10px;
+  }
+
+  .map_text_container{
+	margin-left: 300px; 
+	margin-right:70px;
+  }
+
 
   .right_graph_container{
 	margin-left: 70px;
@@ -157,14 +163,7 @@ p.tips {
   }
 
 
-#symbol_map {
-	top:100px;
-	bottom: 100px; 
-	left: 100px;
-	right: 100px;
-	/*height: 1000px;
-	width: 800px;*/
-}
+
 
 #c-align{
 	text-align: center;
