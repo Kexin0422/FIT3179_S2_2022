@@ -35,6 +35,12 @@
     "y": {
       "field": "AtLeastBasicSanitizationService","type":"quantitative", "title":"Population (%)"
     },
+    "size":{
+      "field":"AtLeastBasicSanitizationService",
+      "type": "quantitative",
+      "scale":{"rangeMin":40},
+      "legend":null
+    },
     "color":{
       "field":"YearGroup",
       "scale":{

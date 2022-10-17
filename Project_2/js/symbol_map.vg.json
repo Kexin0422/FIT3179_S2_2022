@@ -68,6 +68,10 @@
         "transform":[ 
           {"filter": "datum.Gender=='Both sexes'"} ,
           {"filter": "Region_selection == null || datum.Region == Region_selection"} ],
+          "params": [{
+            "name": "hover",
+            "select": {"type": "point", "on": "mouseover", "clear": "mouseout"}
+          }],
         "mark": {"type": "circle", "tooltip": {"content": "data"}},
         "encoding": {
           "longitude": {"field": "Longitude", "type": "quantitative"},
@@ -107,7 +111,10 @@
             {"field":"MortalityRate","type": "quantitative","title":"Mortality Rate"},
             {"field":"Region","type": "nominal"},
             {"field":"SubRegion", "type": "nominal","title":"Sub Region"}
-          ]
+          ],
+          "opacity": {
+            "condition": {"test": {"param": "hover", "empty": false}, "value": 1},
+            "value": 0.5}
         }
       }
     ]

@@ -40,6 +40,12 @@
          "title":"Population (%)",
          "axis": {"tickCount": 10}
       },
+      "size":{
+        "field":"AtLeastBasicSanitizationService",
+        "type": "quantitative",
+        "scale":{"rangeMin":40},
+        "legend":null
+      },
       "color":{
         "field":"YearGroup",
         "scale":{
