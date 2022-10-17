@@ -108,7 +108,7 @@
             {"field":"Country","type": "nominal"},
             {"field":"Year","type":"ordinal","timeUnit": "year", "title":"Year"},
             {"field":"Gender", "type": "nominal"},
-            {"field":"MortalityRate","type": "quantitative","title":"Mortality Rate"},
+            {"field":"MortalityRate","type": "quantitative","title":"Mortality Rate","format":".0f"},
             {"field":"Region","type": "nominal"},
             {"field":"SubRegion", "type": "nominal","title":"Sub Region"}
           ],
