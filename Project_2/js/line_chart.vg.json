@@ -71,8 +71,8 @@
       "condition":{"param": "Region_highlight","value":1},"value":0.2
     },
       "tooltip":[
-        {"field":"Year", "type":"ordinal","timeUnit": "year", "title":"Year"},
         {"field":"Region", "type": "nominal"},
+        {"field":"Year", "type":"ordinal","timeUnit": "year", "title":"Year"},
         {"field":"SafeSanitization","aggregate":"mean","type": "quantitative","format":".2f", "title":"Population (%)"}
       ]
     }
