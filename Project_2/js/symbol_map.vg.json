@@ -1,44 +1,37 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "background": "rgba(0,0,0,0)",
-    "width": 800,
+    "width":800,
     "height": 450,
+    "background": "rgba(0,0,0,0)",
     "params": [
       {
         "name": "zoom_level",
-        "value": 100,
+        "value":100,
         "bind": {
           "input": "range",
-          "min": 100,
+          "min": 200,
           "max": 1000,
           "step": 100,
           "name": "Zoom: "
       } },
-      {
-        "name" : "Region_selection",
-        "bind" : {
-            "input" : "select",
-            "options": [
-                null, 
-                "Africa",
-                "Americas",
-                "Asia",
-                "Europe",
-                "Oceania"
-            ],
-            "labels": [
-                "Show All",
-                "Africa",
-                "Americas",
-                "Asia",
-                "Europe",
-                "Oceania"
-            ],
-            "name": "Region Selection"
+        {
+            "name": "center_to",
+            "value": [20.24,6.35],
+            "bind": {
+                "input": "select",
+                "options": [
+                  [133.73,-14.04],
+                  [19.15,52.83],
+                  [92.9,26.4],
+                  [-63.72,-0.03],
+                  [20.24,6.35]
+                ],
+                "labels": ["Oceania","Europe","Asia", "Americas","Africa"],
+                "name": "Map Centre: "
+            }
         }
-    }
     ],
-    "projection": {"type": "equalEarth","scale": {"expr": "zoom_level"}},
+    "projection": {"type": "equalEarth","scale": {"expr": "zoom_level"},"center":{"expr": "center_to"}},
     "layer": [
       {
         "data": {
@@ -66,8 +59,7 @@
           "url": "https://raw.githubusercontent.com/Kexin0422/FIT3179_S2_2022/main/Project_2/data/mortalityRateUnsafeWashUpdated.csv"
         },
         "transform":[ 
-          {"filter": "datum.Gender=='Both sexes'"} ,
-          {"filter": "Region_selection == null || datum.Region == Region_selection"} ],
+          {"filter": "datum.Gender=='Both sexes'"}],
           "params": [{
             "name": "hover",
             "select": {"type": "point", "on": "mouseover", "clear": "mouseout"}
